@@ -1,0 +1,34 @@
+.wrapper {
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+}
+
+.graph {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.legend {
+    position: absolute;
+    background-color: #e0e0e0;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 10px 20px;
+}
+
+.dygraph-axis-label-x {
+    color: 'black' !important;
+}
+
+
+.dygraph-axis-label-y {
+    color: 'black' !important;
+}
+

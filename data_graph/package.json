@@ -1,0 +1,18 @@
+{
+  "name": "data_graph",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "dygraphs": "^2.2.1",
+    "fontfaceobserver": "^2.3.0"
+  }
+}
