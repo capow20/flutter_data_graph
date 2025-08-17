@@ -1,4 +1,4 @@
-A Flutter package that brings [Dygraph.js](http://dygraphs.com/) line graphs into your Flutter apps via **Dart/JS interop**.  
+A Flutter package that brings [Dygraph.js](https://dygraphs.com/) line graphs into your Flutter apps via **Dart/JS interop**.  
 It provides a **Flutter-friendly API** for building interactive, high-performance numeric line charts without writing JavaScript yourself.
 
 ---
@@ -127,4 +127,4 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 ## 🙌 Acknowledgements
 
-- Built on top of the excellent [Dygraph.js](http://dygraphs.com/).
+- Built on top of the excellent [Dygraph.js](https://dygraphs.com/).
