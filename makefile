@@ -9,8 +9,5 @@ update_js:
 	cp ./lib/src/js/index.js.map ./example/build/flutter_assets/packages/flutter_data_graph/lib/src/js/index.js.map;
 
 pub_get:
-	cd flutter_data_graph && flutter pub get && cd ..;
+	flutter pub get;
 	cd example && flutter pub get;
-
-clean:
-	cd example && flutter clean && flutter pub get && cd .. && make update_js;

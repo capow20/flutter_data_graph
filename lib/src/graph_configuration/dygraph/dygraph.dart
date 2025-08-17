@@ -80,7 +80,7 @@ extension type Dygraph._(JSObject _) implements JSObject {
   ///
   /// This value will be different than what is returned by [GraphController.yAxisExtremes] if you set [GraphConfiguration.minY] or [GraphConfiguration.maxY]
   ///
-  /// Returns a list of [low, high], one for each y-axis.
+  /// Returns a list of `[low, high]`, one for each y-axis.
   List<List<double>> yAxisExtremes() =>
       JSArray.from<JSObject>(_yAxisExtremes()).toDart.map((e) => JSArray.from<JSNumber>(e).toDoubleList).toList();
 

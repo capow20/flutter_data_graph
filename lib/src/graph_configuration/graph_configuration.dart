@@ -177,7 +177,7 @@ class GraphConfiguration extends Equatable {
 
   /// Called after each zoom.
   ///
-  /// An array of [min, max] will be present for each y-axis
+  /// An array of `[min, max]` will be present for each y-axis
   final ZoomCallback? zoomCallback;
 
   /// Called before each time the graph is drawn.
