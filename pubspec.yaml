@@ -3,6 +3,13 @@ description: "Interactive numeric line charts for Flutter Web using Dygraph.js w
 repository: "https://github.com/capow20/flutter_data_graph"
 version: 0.0.1
 
+topics: 
+  - chart
+  - line-chart
+  - graph
+  - visualization
+  - data-visualization
+
 environment:
   sdk: ^3.8.1
   flutter: ">=1.17.0"
