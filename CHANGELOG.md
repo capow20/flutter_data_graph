@@ -1,3 +1,9 @@
+## 0.0.1+1
+
+### Updated
+- Updated README.md links to use https.
+- Added topics to pubspec.yaml
+
 ## 0.0.1
 
 ### Added
