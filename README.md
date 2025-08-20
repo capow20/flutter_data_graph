@@ -58,12 +58,12 @@ class MyGraphPage extends StatelessWidget {
       body: Center(
         child: DataGraph(
           data: data,
-          config: GraphConfiguration(
+          config: const GraphConfiguration(
             xLabel: 'Index',
             series: [
               SeriesConfiguration(
                 name: 'My Series',
-                color: '#2196f3',
+                color: Color(0xFF2196F3),
                 strokeWidth: 2,
               ),
             ],
@@ -81,27 +81,27 @@ class MyGraphPage extends StatelessWidget {
 
 ```dart
 final config = GraphConfiguration(
-    xLabel: 'X',
-    minY: 0,
-    maxY: 15,
-    series: const [
-        SeriesConfiguration(
-        name: 'Sensor A',
-        color: Color(0xFFFF5722),
-        strokeWidth: 2,
-        ),
-    ],
-    extraLines: const [
-        ExtraLineConfiguration(
-        yValue: 8,
-        color: Color(0xFF00C853),
-        strokeWidth: 2,
-        strokePattern: [20, 20],
-        ),
-    ],
-    zoomCallback: (minX, maxX, ranges) {
-        debugPrint('Zoomed to: $ranges');
-    },
+  xLabel: 'X',
+  minY: 0,
+  maxY: 15,
+  series: const [
+    SeriesConfiguration(
+      name: 'Sensor A',
+      color: Color(0xFFFF5722),
+      strokeWidth: 2,
+    ),
+  ],
+  extraLines: const [
+    ExtraLineConfiguration(
+      yValue: 8,
+      color: Color(0xFF00C853),
+      strokeWidth: 2,
+      strokePattern: [20, 20],
+    ),
+  ],
+  zoomCallback: (minX, maxX, ranges) {
+    debugPrint('Zoomed to: $ranges');
+  },
 );
 ```
 
