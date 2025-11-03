@@ -1,3 +1,6 @@
+## 0.0.2
+- Updated Dart and Flutter sdk versions
+
 ## 0.0.1+1
 
 ### Updated
