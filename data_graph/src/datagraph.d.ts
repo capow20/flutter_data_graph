@@ -85,13 +85,25 @@ declare namespace datagraph {
         xValue : number;
         color : string;
         backgroundColor : string;
+        strokeColor : string?;
+        strokeWidth : number;
         text : string;
         font : string;
+        tagShape : string;
         tagHeight : number;
         tagWidth : number;
         pinHeight : number;
         pinWidth : number;
         onTap : TagClickHandler | null;
+        showTooltip : boolean;
+        tooltipHtml : string;
+        tooltipFontSize : string;
+        tooltipFontFamily : string;
+        tooltipColor : string;
+        tooltipBackgroundColor : string;
+        tooltipPadding : string;
+        tooltipBorder : string;
+        tooltipBorderRadius : string;
     }
 
     /** Configuration for custom circles drawn on the graph. */

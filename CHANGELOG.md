@@ -1,3 +1,7 @@
+## 0.0.3
+- Added option to TagConfiguration to allow for rectangular or triangular tag shape.
+- Added options to TagConfiguration to allow for displaying a tool tip when a tag is hovered.
+
 ## 0.0.2
 - Updated Dart and Flutter sdk versions
 

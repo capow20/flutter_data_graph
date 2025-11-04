@@ -324,7 +324,32 @@ function buildOptions(config) {
     },
     pointClickCallback: (e, point) => config.pointClickCallback?.call(e, point),
     highlightCallback: function (e, x, points, row, series) {
-      graph.canvas_.style.cursor = getSelectedTag(e, graph.canvas_, config.tags) == null ? "default" : "pointer";
+      var tag = getSelectedTag(e, graph.canvas_, config.tags);
+      graph.canvas_.style.cursor = tag == null ? "default" : "pointer";
+
+      var rect = graph.canvas_.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top - 10;
+
+      var tooltip = document.getElementById('tooltip');
+      if(tag != null && tag.showTooltip) {
+        tooltip.style.left = x +'px';
+        tooltip.style.top = y +'px';
+
+        tooltip.innerHTML = tag.tooltipHtml;
+        tooltip.style.fontSize = tag.tooltipFontSize;
+        tooltip.style.fontFamily = tag.tooltipFontFamily;
+        tooltip.style.color = tag.tooltipColor;
+        tooltip.style.background = tag.tooltipBackgroundColor;
+        tooltip.style.padding = tag.tooltipPadding;
+        tooltip.style.border = tag.tooltipBorder;
+        tooltip.style.borderRadius = tag.tooltipBorderRadius;
+        
+        tooltip.style.visibility = 'visible';
+      } else {
+        tooltip.style.visibility = 'hidden';
+      }
+      
 
       config.highlightCallback?.call(e, x, points, row, series);
     },

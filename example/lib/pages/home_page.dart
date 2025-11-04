@@ -97,6 +97,8 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                           backgroundColor: Colors.lightBlue,
                           text: unicode,
+                          showTooltip: true,
+                          tooltipHtml: e.value,
                           onTap: (v) {
                             showDialog<void>(
                               context: context,
