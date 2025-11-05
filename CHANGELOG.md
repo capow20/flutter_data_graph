@@ -1,3 +1,7 @@
+## 0.0.4
+- Fix for issue causing tooltips for tags that are not visible to be shown while zoomed.
+- Fix for tooltips to not be shown correctly for triangular tags while zoomed.
+
 ## 0.0.3
 - Added option to TagConfiguration to allow for rectangular or triangular tag shape.
 - Added options to TagConfiguration to allow for displaying a tool tip when a tag is hovered.

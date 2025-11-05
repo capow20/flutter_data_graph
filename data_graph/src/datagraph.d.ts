@@ -145,10 +145,10 @@ declare namespace datagraph {
         legendConfig : LegendConfiguration | null;
 
         //! ===== EXTRA LINES ===== //
-        extraLines : Array<ExtraLineConfiguration>;
+        extraLines : ExtraLineConfiguration[];
 
         //! ===== TAGS ===== //
-        tags : Array<TagConfiguration>;
+        tags : TagConfiguration[];
 
         //! ===== CALLBACKS ===== //
         clickCallback :  ((value: number, points: DataPoint[]) => void ) | null

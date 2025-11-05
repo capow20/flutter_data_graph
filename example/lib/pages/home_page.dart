@@ -91,12 +91,15 @@ class _HomePageState extends State<HomePage> {
                         SeriesConfiguration(name: 'Sensor 2 - Cleaned', color: Colors.lightBlue),
                       ],
                       tags: state.comments.entries.map((e) {
-                        final unicode = getCommentIcon(e.value);
+                        //final unicode = getCommentIcon(e.value);
                         return TagConfiguration(
                           xValue: e.key,
                           color: Colors.white,
                           backgroundColor: Colors.lightBlue,
-                          text: unicode,
+                          //text: unicode,
+                          text: '',
+                          pinHeight: 0,
+                          pinWidth: 0,
                           showTooltip: true,
                           tooltipHtml: e.value,
                           onTap: (v) {

@@ -9,27 +9,25 @@ function getEventCoordinates(canvas, e) {
 function between(v, min, max) { return v >= min && v <= max }
 
 function pointInRect(px, py, tag) {
-  return between(px, tag.x, tag.x + tag.w) && between(py, tag.y, tag.y + tag.h);
+    return between(px, tag.x, tag.x + tag.w) && between(py, tag.y, tag.y + tag.h);
 }
 
-function pointInTriangle(px, py, tag, ep = 0.0001) {
-  const { x, y, w, h } = tag;
+function pointInTriangle(px, py, tag) {
+    const { a, b, c } = tag;
+    let p = { x: px, y: py };
 
-  if (py < y - ep || py > y + h + ep) return false;
+    let de = ((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y));
 
-  const t = (py - y) / h;
-  if (t < -ep || t > 1 + ep) return false;
+    let aa = ((b.y - c.y) * (p.x - c.x) + (c.x - b.x) * (p.y - c.y)) / de;
+    let ab = ((c.y - a.y) * (p.x - c.x) + (a.x - c.x) * (p.y - c.y)) / de;
+    let ac = 1 - aa - ab;
 
-  const cx = x + w / 2;
-  const half = (w / 2) * t + ep;
-
-  return px >= cx - half && px <= cx + half;
+    return aa >= 0 && ab >= 0 && ac >= 0;
 }
 
 function isPointInTag(x, y, tag) {
-    if(tag.tagShape == 'Rectangle')  return pointInRect(x, y, tag);
-    if(tag.tagShape == 'Triangle') return pointInTriangle(x, y, tag);
-   
+    if (tag.tagShape == 'Rectangle') return pointInRect(x, y, tag);
+    if (tag.tagShape == 'Triangle') return pointInTriangle(x, y, tag);
 }
 
 export function getSelectedTag(event, canvas, tags) {
@@ -77,7 +75,7 @@ export function drawTag(ctx, tag, domX, domY) {
     }
 
     ctx.fillStyle = tag.backgroundColor;
-    if(tag.strokeColor != null) {
+    if (tag.strokeColor != null) {
         ctx.strokeStyle = tag.strokeColor;
         ctx.lineWidth = tag.strokeWidth;
     }
@@ -88,17 +86,20 @@ export function drawTag(ctx, tag, domX, domY) {
     //! Draw tag
     if (rect) {
         ctx.fillRect(tag.x, tag.y, tag.w, tag.tagHeight);
-        if(tag.strokeColor != null) ctx.strokeRect(tag.x, tag.y, tag.w, tag.tagHeight);
+        if (tag.strokeColor != null) ctx.strokeRect(tag.x, tag.y, tag.w, tag.tagHeight);
     } else {
+        tag.a = { x: tag.x, y: domY - tag.pinHeight };
+        tag.b = { x: domX, y: tag.y };
+        tag.c = { x: domX + (tag.w / 2.0), y: domY - tag.pinHeight };
         ctx.beginPath();
-        ctx.moveTo(tag.x, domY - tag.pinHeight);
-        ctx.lineTo(domX, tag.y);
-        ctx.lineTo(domX + (tag.w / 2.0), domY - tag.pinHeight);
+        ctx.moveTo(tag.a.x, tag.a.y);
+        ctx.lineTo(tag.b.x, tag.b.y);
+        ctx.lineTo(tag.c.x, tag.c.y);
         ctx.closePath();
         ctx.fill();
-        if(tag.strokeColor != null) ctx.stroke();
+        if (tag.strokeColor != null) ctx.stroke();
     }
-    
+
     //! Draw icon
     ctx.fillStyle = tag.color;
     ctx.textAlign = "center";

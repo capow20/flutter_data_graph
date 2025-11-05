@@ -324,7 +324,8 @@ function buildOptions(config) {
     },
     pointClickCallback: (e, point) => config.pointClickCallback?.call(e, point),
     highlightCallback: function (e, x, points, row, series) {
-      var tag = getSelectedTag(e, graph.canvas_, config.tags);
+      let [xMin, xMax] = graph.xAxisRange();
+      var tag = getSelectedTag(e, graph.canvas_, config.tags.filter(e => xMin <= e.xValue && e.xValue <= xMax));
       graph.canvas_.style.cursor = tag == null ? "default" : "pointer";
 
       var rect = graph.canvas_.getBoundingClientRect();
