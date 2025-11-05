@@ -1,3 +1,6 @@
+## 0.0.5
+- Reverted hover and click detection for all tags to use rectangular logic.
+
 ## 0.0.4
 - Fix for issue causing tooltips for tags that are not visible to be shown while zoomed.
 - Fix for tooltips to not be shown correctly for triangular tags while zoomed.

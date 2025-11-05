@@ -26,8 +26,7 @@ function pointInTriangle(px, py, tag) {
 }
 
 function isPointInTag(x, y, tag) {
-    if (tag.tagShape == 'Rectangle') return pointInRect(x, y, tag);
-    if (tag.tagShape == 'Triangle') return pointInTriangle(x, y, tag);
+    return pointInRect(x, y, tag);
 }
 
 export function getSelectedTag(event, canvas, tags) {
