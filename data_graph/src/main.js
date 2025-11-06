@@ -221,6 +221,40 @@ function applyCssStyles(config) {
   yAxisLabelRule.style.color = config.yAxisConfig?.axisLabelColor ?? 'black';
   xAxisLabelRule.style.color = config.xAxisConfig?.axisLabelColor ?? 'black';
 }
+/**
+ * 
+ * @param {MouseEvent} e 
+ * @param {Dygraph} g 
+ * @param {datagraph.GraphConfiguration} config 
+ */
+function displayTooltipOnMouseMove(e, g, config) {
+  let [xMin, xMax] = g.xAxisRange();
+  var tag = getSelectedTag(e, g.canvas_, config.tags.filter(e => xMin <= e.xValue && e.xValue <= xMax));
+  g.canvas_.style.cursor = tag == null ? "default" : "pointer";
+
+  var rect = g.canvas_.getBoundingClientRect();
+  var x = e.clientX - rect.left;
+  var y = e.clientY - rect.top - 10;
+
+  var tooltip = document.getElementById('tooltip');
+  if (tag != null && tag.showTooltip) {
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+
+    tooltip.innerHTML = tag.tooltipHtml;
+    tooltip.style.fontSize = tag.tooltipFontSize;
+    tooltip.style.fontFamily = tag.tooltipFontFamily;
+    tooltip.style.color = tag.tooltipColor;
+    tooltip.style.background = tag.tooltipBackgroundColor;
+    tooltip.style.padding = tag.tooltipPadding;
+    tooltip.style.border = tag.tooltipBorder;
+    tooltip.style.borderRadius = tag.tooltipBorderRadius;
+
+    tooltip.style.visibility = 'visible';
+  } else {
+    tooltip.style.visibility = 'hidden';
+  }
+}
 
 /**
 * Builds Dygraph Options object from config.
@@ -281,6 +315,12 @@ function buildOptions(config) {
         try {
           mouseupDelegate?.call(e, g, ctx);
         } catch (_) { }
+      },
+      mousemove(e, g, ctx) {
+        try {
+          if(config.tags.length == 0) return;
+          displayTooltipOnMouseMove(e, g, config);
+        } catch (_) { }
       }
     },
     //! ========== AXIS CONFIG ========== //
@@ -324,38 +364,11 @@ function buildOptions(config) {
     },
     pointClickCallback: (e, point) => config.pointClickCallback?.call(e, point),
     highlightCallback: function (e, x, points, row, series) {
-      let [xMin, xMax] = graph.xAxisRange();
-      var tag = getSelectedTag(e, graph.canvas_, config.tags.filter(e => xMin <= e.xValue && e.xValue <= xMax));
-      graph.canvas_.style.cursor = tag == null ? "default" : "pointer";
-
-      var rect = graph.canvas_.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top - 10;
-
-      var tooltip = document.getElementById('tooltip');
-      if(tag != null && tag.showTooltip) {
-        tooltip.style.left = x +'px';
-        tooltip.style.top = y +'px';
-
-        tooltip.innerHTML = tag.tooltipHtml;
-        tooltip.style.fontSize = tag.tooltipFontSize;
-        tooltip.style.fontFamily = tag.tooltipFontFamily;
-        tooltip.style.color = tag.tooltipColor;
-        tooltip.style.background = tag.tooltipBackgroundColor;
-        tooltip.style.padding = tag.tooltipPadding;
-        tooltip.style.border = tag.tooltipBorder;
-        tooltip.style.borderRadius = tag.tooltipBorderRadius;
-        
-        tooltip.style.visibility = 'visible';
-      } else {
-        tooltip.style.visibility = 'hidden';
-      }
-      
-
       config.highlightCallback?.call(e, x, points, row, series);
     },
     unhighlightCallback: (e) => config.unhighlightCallback?.call(e),
     drawCallback: function (g, initial) {
+      console.log("draw callback");
       circledPoints.forEach((e) => {
         let [cx, cy] = g.toDomCoords(e.x, e.y);
         drawCircleAtPoint(g.hidden_ctx_, cx, cy, e.config);

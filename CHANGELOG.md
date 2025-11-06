@@ -1,3 +1,6 @@
+## 0.0.6
+- Moved tag detection for tooltips/cursor to interaction model's mousemove event to fix missed detection when at high zoom levels.
+
 ## 0.0.5
 - Reverted hover and click detection for all tags to use rectangular logic.
 
