@@ -1,3 +1,6 @@
+## 0.0.7
+- Altered logic for tooltip wrap and positioning to prevent horizontal overflows
+
 ## 0.0.6
 - Moved tag detection for tooltips/cursor to interaction model's mousemove event to fix missed detection when at high zoom levels.
 

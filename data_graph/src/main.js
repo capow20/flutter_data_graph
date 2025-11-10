@@ -238,9 +238,6 @@ function displayTooltipOnMouseMove(e, g, config) {
 
   var tooltip = document.getElementById('tooltip');
   if (tag != null && tag.showTooltip) {
-    tooltip.style.left = x + 'px';
-    tooltip.style.top = y + 'px';
-
     tooltip.innerHTML = tag.tooltipHtml;
     tooltip.style.fontSize = tag.tooltipFontSize;
     tooltip.style.fontFamily = tag.tooltipFontFamily;
@@ -250,8 +247,17 @@ function displayTooltipOnMouseMove(e, g, config) {
     tooltip.style.border = tag.tooltipBorder;
     tooltip.style.borderRadius = tag.tooltipBorderRadius;
 
+    tooltip.style.maxWidth = `${rect.width / 2.0}px`;
+    tooltip.style.whiteSpace = 'normal';
+    tooltip.style.wordBreak = 'break-word';
+
+    if(x + tooltip.offsetWidth > rect.width) x -= tooltip.offsetWidth;
+
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
     tooltip.style.visibility = 'visible';
   } else {
+    tooltip.innerHTML = '';
     tooltip.style.visibility = 'hidden';
   }
 }
