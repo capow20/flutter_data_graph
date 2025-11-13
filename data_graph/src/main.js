@@ -40,6 +40,13 @@ let fullYRange = [0, 0];
  */
 let circledPoints = [];
 
+
+/**
+ * The list of tags with their dom coordinates attached
+ * @type {datagraph.TagConfiguration[]}
+ */
+let tags = [];
+
 //! ========== INTERACTION MODEL DELEGATES ==========
 /**
  * Function to be called in graph's interaction model mouseup event.
@@ -225,11 +232,10 @@ function applyCssStyles(config) {
  * 
  * @param {MouseEvent} e 
  * @param {Dygraph} g 
- * @param {datagraph.GraphConfiguration} config 
  */
-function displayTooltipOnMouseMove(e, g, config) {
+function displayTooltipOnMouseMove(e, g) {
   let [xMin, xMax] = g.xAxisRange();
-  var tag = getSelectedTag(e, g.canvas_, config.tags.filter(e => xMin <= e.xValue && e.xValue <= xMax));
+  var tag = getSelectedTag(e, g.canvas_, tags.filter(e => xMin <= e.xValue && e.xValue <= xMax));
   g.canvas_.style.cursor = tag == null ? "default" : "pointer";
 
   var rect = g.canvas_.getBoundingClientRect();
@@ -268,7 +274,7 @@ function displayTooltipOnMouseMove(e, g, config) {
 * @returns {import("dygraphs").dygraphs.Options} 
 */
 function buildOptions(config) {
-  let tags = config.tags;
+  tags = config.tags;
   let labels = [config.xLabel];
   let series = {};
 
@@ -324,8 +330,8 @@ function buildOptions(config) {
       },
       mousemove(e, g, ctx) {
         try {
-          if(config.tags.length == 0) return;
-          displayTooltipOnMouseMove(e, g, config);
+          if(tags.length == 0) return;
+          displayTooltipOnMouseMove(e, g);
         } catch (_) { }
       }
     },

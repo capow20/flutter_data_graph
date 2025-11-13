@@ -1,3 +1,6 @@
+## 0.0.8
+- Fixed bug causing tooltips to not be displayed after rebuilds.
+
 ## 0.0.7
 - Altered logic for tooltip wrap and positioning to prevent horizontal overflows
 
