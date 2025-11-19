@@ -1,3 +1,6 @@
+## 0.0.8+1
+- Added preliminary support for plotting individual series as bars rather than lines
+
 ## 0.0.8
 - Fixed bug causing tooltips to not be displayed after rebuilds.
 

@@ -7,19 +7,18 @@ part 'graph_data_state.dart';
 
 class GraphDataCubit extends Cubit<GraphDataState> {
   GraphDataCubit() : super(const GraphDataState()) {
-    loadGraphData();
+    loadLineGraphData();
+    loadBarGraphData();
   }
 
-  Future<void> loadGraphData() async {
+  Future<void> loadLineGraphData() async {
     final raw = List<Map<String, dynamic>>.from(
       jsonDecode(await rootBundle.loadString('assets/example_data.json')) as List<dynamic>,
     );
 
     final Map<double, String> remarks = {};
     final List<List<double>> formatted = raw.map((e) {
-      if (e['Comments'] != null) {
-        remarks[e['Station'] as double] = e['Comments'] as String;
-      }
+      if (e['Comments'] != null) remarks[e['Station'] as double] = e['Comments'] as String;
       return [
         e['Station'] as double,
         e['Sensor_1'] as double,
@@ -29,6 +28,18 @@ class GraphDataCubit extends Cubit<GraphDataState> {
       ];
     }).toList();
 
-    emit(state.copyWith(data: formatted, comments: remarks));
+    emit(state.copyWith(lineData: formatted, comments: remarks));
+  }
+
+  Future<void> loadBarGraphData() async {
+    final raw = List<Map<String, dynamic>>.from(
+      jsonDecode(await rootBundle.loadString('assets/example_bar_data.json')) as List<dynamic>,
+    );
+
+    final List<List<double>> formatted = raw
+        .map((e) => [e['station'] as double, (e['read'] as double?) ?? double.nan])
+        .toList();
+
+    emit(state.copyWith(barData: formatted));
   }
 }

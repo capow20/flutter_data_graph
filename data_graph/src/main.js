@@ -3,6 +3,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import { getSelectedTag, drawTag } from './utils/tag_utils';
 import { drawExtraLine } from './utils/extra_line_utils';
 import { drawCircleAtPoint } from './utils/circle_utils';
+import { SeriesPlotters } from './utils/plotting_utils';
 
 //! ========== CONSTANTS ==========
 
@@ -101,9 +102,7 @@ function updateConfig(config) {
 * Used to alter data after graph has been initialized.
 * @param {number[][]} data The data that will be displayed in the graph. Each data point must be represented in the format: [x, y1, y2, y3, ...]
 */
-function updateData(data) {
-  graph.updateOptions({ file: data });
-}
+function updateData(data) { graph.updateOptions({ file: data }); }
 
 /**
  * Focuses the graph on the specified x and y-axis ranges.
@@ -165,10 +164,7 @@ window.circlePoint = circlePoint;
 window.clearCircledPoint = clearCircledPoint;
 window.clearAllCircledPoints = clearAllCircledPoints;
 
-window.dispose = function () {
-  console.log('destroying graph!')
-  graph.destroy();
-};
+window.dispose = function () { graph.destroy(); };
 
 // Pseudo getters for axis range values.
 window.yAxisExtremes = function () { return fullYRange; }
@@ -228,6 +224,7 @@ function applyCssStyles(config) {
   yAxisLabelRule.style.color = config.yAxisConfig?.axisLabelColor ?? 'black';
   xAxisLabelRule.style.color = config.xAxisConfig?.axisLabelColor ?? 'black';
 }
+
 /**
  * 
  * @param {MouseEvent} e 
@@ -257,7 +254,7 @@ function displayTooltipOnMouseMove(e, g) {
     tooltip.style.whiteSpace = 'normal';
     tooltip.style.wordBreak = 'break-word';
 
-    if(x + tooltip.offsetWidth > rect.width) x -= tooltip.offsetWidth;
+    if (x + tooltip.offsetWidth > rect.width) x -= tooltip.offsetWidth;
 
     tooltip.style.left = x + 'px';
     tooltip.style.top = y + 'px';
@@ -289,7 +286,10 @@ function buildOptions(config) {
       drawPoints: e.drawPoints,
       pointSize: e.pointSize,
       highlightCircleSize: e.highlightCircleSize,
+      barWidthRatio: e.barWidthRatio,
     };
+
+    if (e.plotterType == 1) series[e.name].plotter = SeriesPlotters.Bar;
   });
 
   mouseupDelegate = config.mouseupHandler;
@@ -330,7 +330,7 @@ function buildOptions(config) {
       },
       mousemove(e, g, ctx) {
         try {
-          if(tags.length == 0) return;
+          if (tags.length == 0) return;
           displayTooltipOnMouseMove(e, g);
         } catch (_) { }
       }
@@ -380,7 +380,6 @@ function buildOptions(config) {
     },
     unhighlightCallback: (e) => config.unhighlightCallback?.call(e),
     drawCallback: function (g, initial) {
-      console.log("draw callback");
       circledPoints.forEach((e) => {
         let [cx, cy] = g.toDomCoords(e.x, e.y);
         drawCircleAtPoint(g.hidden_ctx_, cx, cy, e.config);
