@@ -277,17 +277,7 @@ function buildOptions(config) {
 
   config.series.forEach((e) => {
     labels.push(e.name);
-    series[e.name] = {
-      color: e.color,
-      strokeWidth: e.strokeWidth,
-      strokeBorderWidth: e.strokeBorderWidth,
-      strokeBorderColor: e.strokeBorderColor,
-      strokePattern: e.strokePattern,
-      drawPoints: e.drawPoints,
-      pointSize: e.pointSize,
-      highlightCircleSize: e.highlightCircleSize,
-      barWidthRatio: e.barWidthRatio,
-    };
+    series[e.name] = e;
 
     if (e.plotterType == 1) series[e.name].plotter = SeriesPlotters.Bar;
   });

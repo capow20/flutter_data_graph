@@ -3,6 +3,7 @@ declare namespace datagraph {
     type AxisValueFormatter = (value: number, series: string) => string;
     type AxisLabelFormatter = (value: number, granularity: number) => string;
     type TagClickHandler = (value: number) => void;
+    type PlotterColorCallback = (x: number, y: number) => string;
 
     /** Represents a tick on one of the graph's axes */
     interface AxisTick {
@@ -50,6 +51,7 @@ declare namespace datagraph {
         highlightCircleSize: number;
         plotterType: SeriesPlotterType;
         barWidthRatio: number;
+        plotterColorCallback : PlotterColorCallback | null;
     }
 
     enum SeriesPlotterType { line, bar }

@@ -12,6 +12,8 @@ import 'package:uuid/uuid.dart';
 import 'package:web/web.dart';
 
 /// Controller used to interact with the graph and its data.
+///
+/// Use [double.nan] to insert breaks in a series's line.
 class GraphController {
   GraphController({
     required List<List<num>> data,

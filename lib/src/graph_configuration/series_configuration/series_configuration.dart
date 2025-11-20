@@ -3,6 +3,7 @@ import 'dart:js_interop';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_data_graph/src/graph_configuration/graph_configuration.dart';
+import 'package:flutter_data_graph/src/graph_configuration/series_configuration/plotter_color_callback.dart';
 import 'package:flutter_data_graph/src/util/js_extensions.dart';
 
 /// Represents a series of data.
@@ -21,6 +22,7 @@ class SeriesConfiguration extends Equatable {
     this.highlightCircleSize = 3,
     this.plotterType = SeriesPlotterType.line,
     this.barWidthRatio = 0.8,
+    this.plotterColorCallback,
   });
 
   /// Simple factory to remove the requirement for name and color.
@@ -36,6 +38,7 @@ class SeriesConfiguration extends Equatable {
     double? highlightCircleSize,
     SeriesPlotterType? plotterType,
     double? barWidthRatio,
+    PlotterColorCallback? plotterColorCallback,
   }) => SeriesConfiguration(
     name: '',
     color: Colors.black,
@@ -48,6 +51,7 @@ class SeriesConfiguration extends Equatable {
     highlightCircleSize: highlightCircleSize ?? 3,
     plotterType: plotterType ?? SeriesPlotterType.line,
     barWidthRatio: barWidthRatio ?? 0.8,
+    plotterColorCallback: plotterColorCallback,
   );
 
   /// The name of the series.
@@ -98,6 +102,13 @@ class SeriesConfiguration extends Equatable {
   /// The width of each bar will be calculated as : ({ graph width } / { # of points }) * [barWidthRatio]
   final double barWidthRatio;
 
+  /// An optional callback which will be called for each point of the series to determine the color of its bar.
+  ///
+  /// Only effective if [plotterType] is set to [SeriesPlotterType.bar]
+  ///
+  /// Useful for setting colors based on criteria set for the data.
+  final PlotterColorCallback? plotterColorCallback;
+
   JSSeriesConfiguration get toJS => JSSeriesConfiguration(
     name: name,
     color: color.toCSS,
@@ -110,6 +121,9 @@ class SeriesConfiguration extends Equatable {
     highlightCircleSize: highlightCircleSize,
     plotterType: plotterType.index,
     barWidthRatio: barWidthRatio,
+    plotterColorCallback: plotterColorCallback == null
+        ? null
+        : createJSInteropWrapper(PlotterColorCallbackWrapper(plotterColorCallback!)),
   );
 
   @override
@@ -125,6 +139,7 @@ class SeriesConfiguration extends Equatable {
     highlightCircleSize,
     plotterType,
     barWidthRatio,
+    plotterColorCallback,
   ];
 }
 
@@ -141,6 +156,7 @@ extension type JSSeriesConfiguration._(JSObject _) implements JSObject {
     required double highlightCircleSize,
     required int plotterType,
     required double barWidthRatio,
+    required JSObject? plotterColorCallback,
   });
 }
 

@@ -153,8 +153,21 @@ class _HomePageState extends State<HomePage> {
                           gridLineColor: Colors.white,
                         ),
                         valueFormatter: (p0, p1) => p0.toStringAsFixed(2),
-                        series: const [
-                          SeriesConfiguration(name: 'Read', color: Colors.blue, plotterType: SeriesPlotterType.bar),
+                        series: [
+                          SeriesConfiguration(
+                            name: 'Read',
+                            color: Colors.blue,
+                            plotterType: SeriesPlotterType.bar,
+                            plotterColorCallback: (_, y) {
+                              if (y >= 100) {
+                                return Colors.green;
+                              } else if (y >= 80) {
+                                return Colors.yellow;
+                              } else {
+                                return Colors.red;
+                              }
+                            },
+                          ),
                         ],
                       ),
                       onGraphCreated: (c) => barController = c,

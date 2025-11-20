@@ -1,3 +1,6 @@
+## 0.0.8+2
+- Added support for dynamic bar coloring in bar charts with SeriesConfiguration.plotterColorCallback
+
 ## 0.0.8+1
 - Added preliminary support for plotting individual series as bars rather than lines
 
