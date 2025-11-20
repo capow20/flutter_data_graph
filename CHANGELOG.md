@@ -1,4 +1,4 @@
-## 0.0.8+2
+## 0.0.9+1
 - Added support for dynamic bar coloring in bar charts with SeriesConfiguration.plotterColorCallback
 
 ## 0.0.8+1
