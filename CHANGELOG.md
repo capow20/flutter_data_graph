@@ -1,3 +1,6 @@
+## 0.0.10+1
+- Fixed bug causing  `GraphConfiguration.connectSeparatedPoints` to have no effect.
+
 ## 0.0.9+1
 - Added support for dynamic bar coloring in bar charts with SeriesConfiguration.plotterColorCallback
 
