@@ -12833,57 +12833,57 @@
   },
   {
     "Station":4166.0,
-    "Sensor_1":0.9480423555,
+    "Sensor_1":null,
     "Sensor_2":0.8847037282,
-    "Sensor_1_Cleaned":0.9589711501,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8738418615,
     "Comments":null
   },
   {
     "Station":4168.5,
-    "Sensor_1":0.9479344877,
+    "Sensor_1":null,
     "Sensor_2":0.8850219007,
-    "Sensor_1_Cleaned":0.9588790412,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8739356224,
     "Comments":null
   },
   {
     "Station":4171.0,
-    "Sensor_1":0.9477955846,
+    "Sensor_1":null,
     "Sensor_2":0.8853458118,
-    "Sensor_1_Cleaned":0.958755897,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.874036163,
     "Comments":null
   },
   {
     "Station":4173.5,
-    "Sensor_1":0.9476423994,
+    "Sensor_1":null,
     "Sensor_2":0.8857150809,
-    "Sensor_1_Cleaned":0.9586184707,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8741831239,
     "Comments":null
   },
   {
     "Station":4176.0,
-    "Sensor_1":0.947511626,
+    "Sensor_1":null,
     "Sensor_2":0.8861592215,
-    "Sensor_1_Cleaned":0.9585034563,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8744060394,
     "Comments":null
   },
   {
     "Station":4178.5,
-    "Sensor_1":0.9473990025,
+    "Sensor_1":null,
     "Sensor_2":0.8866367084,
-    "Sensor_1_Cleaned":0.9584065916,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.874663405,
     "Comments":null
   },
   {
     "Station":4181.0,
-    "Sensor_1":0.9472817934,
+    "Sensor_1":null,
     "Sensor_2":0.8871045347,
-    "Sensor_1_Cleaned":0.9583051415,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8749122345,
     "Comments":null
   },
@@ -13337,33 +13337,33 @@
   },
   {
     "Station":4323.5,
-    "Sensor_1":0.9421314091,
+    "Sensor_1":null,
     "Sensor_2":0.9114316309,
-    "Sensor_1_Cleaned":0.9540530142,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8892259824,
     "Comments":null
   },
   {
     "Station":4326.0,
-    "Sensor_1":0.9421339545,
+    "Sensor_1":null,
     "Sensor_2":0.9118626134,
-    "Sensor_1_Cleaned":0.9540713185,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8895340719,
     "Comments":null
   },
   {
     "Station":4328.5,
-    "Sensor_1":0.9421183883,
+    "Sensor_1":null,
     "Sensor_2":0.9122810752,
-    "Sensor_1_Cleaned":0.9540715112,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8898317378,
     "Comments":null
   },
   {
     "Station":4331.0,
-    "Sensor_1":0.9420874451,
+    "Sensor_1":null,
     "Sensor_2":0.9126888006,
-    "Sensor_1_Cleaned":0.9540563269,
+    "Sensor_1_Cleaned":null,
     "Sensor_2_Cleaned":0.8901207756,
     "Comments":null
   },

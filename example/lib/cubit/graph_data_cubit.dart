@@ -17,14 +17,14 @@ class GraphDataCubit extends Cubit<GraphDataState> {
     );
 
     final Map<double, String> remarks = {};
-    final List<List<double>> formatted = raw.map((e) {
+    final List<List<double?>> formatted = raw.map((e) {
       if (e['Comments'] != null) remarks[e['Station'] as double] = e['Comments'] as String;
       return [
         e['Station'] as double,
-        e['Sensor_1'] as double,
-        e['Sensor_2'] as double,
-        e['Sensor_1_Cleaned'] as double,
-        e['Sensor_2_Cleaned'] as double,
+        e['Sensor_1'] as double?,
+        e['Sensor_2'] as double?,
+        e['Sensor_1_Cleaned'] as double?,
+        e['Sensor_2_Cleaned'] as double?,
       ];
     }).toList();
 

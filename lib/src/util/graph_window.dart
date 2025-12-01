@@ -5,11 +5,11 @@ import 'package:flutter_data_graph/src/graph_configuration/graph_configuration.d
 import 'package:web/web.dart';
 
 extension type DataGraphIFrameWindow(Window window) implements Window {
-  external void initGraph(JSArray<JSArray<JSNumber>> data, JSGraphConfiguration config);
+  external void initGraph(JSArray<JSArray<JSNumber?>> data, JSGraphConfiguration config);
 
   external void updateConfig(JSGraphConfiguration config);
 
-  external void updateData(JSArray<JSArray<JSNumber>> data);
+  external void updateData(JSArray<JSArray<JSNumber?>> data);
 
   external void zoom(JSObject xRange, JSObject yRange);
 

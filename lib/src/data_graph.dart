@@ -15,7 +15,7 @@ class DataGraph extends StatefulWidget {
     this.decoration,
     this.clipBehavior,
   });
-  final List<List<num>> data;
+  final List<List<num?>> data;
   final GraphConfiguration config;
   final void Function(GraphController)? onGraphCreated;
   final double? height;

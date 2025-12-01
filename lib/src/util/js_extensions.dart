@@ -3,9 +3,9 @@ import 'dart:js_interop_unsafe';
 
 import 'package:flutter/material.dart';
 
-extension JSExtension on List<List<num>> {
-  JSArray<JSArray<JSNumber>> get toJS {
-    return map((e) => e.map((f) => f.toJS).toList().toJS).toList().toJS;
+extension JSExtension on List<List<num?>> {
+  JSArray<JSArray<JSNumber?>> get toJS {
+    return map((e) => e.map((f) => f?.toJS).toList().toJS).toList().toJS;
   }
 }
 

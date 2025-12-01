@@ -94,13 +94,12 @@ class _HomePageState extends State<HomePage> {
                           SeriesConfiguration(name: 'Sensor 1 - Cleaned', color: Colors.lightGreen),
                           SeriesConfiguration(name: 'Sensor 2 - Cleaned', color: Colors.lightBlue),
                         ],
+                        connectSeparatedPoints: true,
                         tags: state.comments.entries.map((e) {
-                          //final unicode = getCommentIcon(e.value);
                           return TagConfiguration(
                             xValue: e.key,
                             color: Colors.white,
                             backgroundColor: Colors.lightBlue,
-                            //text: unicode,
                             text: '',
                             pinHeight: 0,
                             pinWidth: 0,

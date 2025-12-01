@@ -1,3 +1,7 @@
+## 0.1.0
+- Updated graph and controller to correctly allow null values to be passed.
+- Updated documentaiton for `GraphConfiguration.connectSeparatedPoints` to more accurately describe its behavior.
+
 ## 0.0.10+1
 - Fixed bug causing  `GraphConfiguration.connectSeparatedPoints` to have no effect.
 

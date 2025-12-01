@@ -16,7 +16,7 @@ import 'package:web/web.dart';
 /// Use [double.nan] to insert breaks in a series's line.
 class GraphController {
   GraphController({
-    required List<List<num>> data,
+    required List<List<num?>> data,
     required GraphConfiguration config,
   }) {
     final origin = window.location.origin;
@@ -77,8 +77,10 @@ class GraphController {
   /// Initializes the graph with the provided data and configuration.
   ///
   /// [data] must be a 2D array, with each data point represented in the format: [x, y1, y2, y3, ...]
+  ///
+  /// Values provided for x-axis must not be null.
   void _initGraph({
-    required List<List<num>> data,
+    required List<List<num?>> data,
     required GraphConfiguration config,
   }) {
     _config = config;
@@ -96,7 +98,9 @@ class GraphController {
   /// Updates the data set shown in the graph without altering configuration.
   ///
   /// Used to update data after graph has been initialized.
-  void updateData({required List<List<num>> data}) {
+  ///
+  /// Values provided for x-axis must not be null.
+  void updateData({required List<List<num?>> data}) {
     _contentWindow.updateData(data.toJS);
   }
 

@@ -7,12 +7,12 @@ class GraphDataState extends Equatable {
     this.comments = const {},
   });
 
-  final List<List<double>> lineData;
+  final List<List<double?>> lineData;
   final List<List<double>> barData;
   final Map<double, String> comments;
 
   GraphDataState copyWith({
-    List<List<double>>? lineData,
+    List<List<double?>>? lineData,
     List<List<double>>? barData,
 
     Map<double, String>? comments,

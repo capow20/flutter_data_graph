@@ -1,6 +1,7 @@
 import 'dart:js_interop';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter_data_graph/flutter_data_graph.dart';
 
 /// Represents a data point on the graph
 ///
@@ -19,6 +20,8 @@ class DataPoint extends Equatable {
   final double x;
 
   /// The y value of the data point
+  ///
+  /// In callbacks such as [GraphConfiguration.clickCallback], this value will be [double.nan] if the original data point is null
   final double y;
 
   JSDataPoint get toJS => JSDataPoint(name: series, xval: x, yval: y);

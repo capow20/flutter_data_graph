@@ -119,9 +119,9 @@ class GraphConfiguration extends Equatable {
   /// Whether zero values should be displayed in the label.
   final bool showZeroValueLabels;
 
-  /// Whether or not gaps (missing data points in a series) should be connected.
+  /// Whether or not gaps (null data points in a series) should be connected.
   ///
-  /// Use [double.nan] to explicitly connect a gap with this set to false.
+  /// Use [double.nan] to explicitly include a gap with this set to true.
   final bool connectSeparatedPoints;
 
   /// The background color of the graph.

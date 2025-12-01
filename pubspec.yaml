@@ -1,7 +1,7 @@
 name: flutter_data_graph
 description: "Interactive numeric line charts for Flutter Web using Dygraph.js with a Flutter-friendly API."
 repository: "https://github.com/capow20/flutter_data_graph"
-version: 0.0.10+1
+version: 0.1.0
 
 topics: 
   - chart
