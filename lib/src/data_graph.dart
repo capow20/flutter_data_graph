@@ -46,9 +46,11 @@ class _DataGraphState extends State<DataGraph> {
 
   @override
   void didUpdateWidget(DataGraph old) {
-    _controller
-      ..updateData(data: widget.data)
-      ..updateConfig(config: widget.config);
+    if (_controller.ready) {
+      _controller
+        ..updateData(data: widget.data)
+        ..updateConfig(config: widget.config);
+    }
     super.didUpdateWidget(old);
   }
 

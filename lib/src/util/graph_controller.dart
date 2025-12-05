@@ -43,6 +43,8 @@ class GraphController {
     PlatformViewRegistry().registerViewFactory('platform-view-$_graphId', (int id) => iframe);
   }
 
+  bool ready = false;
+
   final String _graphId = const Uuid().v4();
 
   late final DataGraphIFrameWindow _contentWindow;
