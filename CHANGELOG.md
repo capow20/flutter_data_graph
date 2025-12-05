@@ -1,3 +1,6 @@
+## 0.1.2
+- Fixed missed update to `GraphController.ready` added in previous update.
+
 ## 0.1.1
 - Added check to `DataGraph.didUpdateWidget` to prevent early updates before graph has been fully initialized.
 

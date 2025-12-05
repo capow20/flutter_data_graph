@@ -37,6 +37,7 @@ class GraphController {
       ((JSAny event) {
         _contentWindow = DataGraphIFrameWindow(iframe.contentWindow!);
         _initGraph(data: data, config: config);
+        ready = true;
       }).toJS,
     );
 
